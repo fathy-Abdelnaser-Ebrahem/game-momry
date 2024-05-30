@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{   
+    font-family: sans-serif;
+}
+
+.control-buttons {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.control-buttons span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 18px 20px;
+    background-color: #2196f3;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    background-color: #ddd;
+    border: 2px solid #2196f3;
+    border-radius: 10px;
+    padding: 10px;
+    width: 1080PX;
+}
+@media (max-width: 1100px) {
+    .info-container {
+        width: 100%;
+    }
+}
+.momory-game-block {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1100px;
+    margin: 20px auto;
+} 
+
+@media (max-width: 1100px) {
+    .momory-game-block {
+        width: 100%;
+    }
+}
+.momory-game-block.stop-clicking {
+    pointer-events: none;
+}
+.game-block {
+    height: 200px;
+    transition: transform .5s;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+    margin: 0 10px 20px;
+    flex: 1 0 200px;
+}
+@media (max-width: 1100px) {
+    .game-block {
+        flex: 1 0 30%;
+    }
+}
+
+.game-block .front {
+    background-color: #333;
+    line-height: 200px;
+    text-align: center;
+    position: absolute;
+}
+.game-block .front::before {
+    content: "!";
+    color: #ddd;
+    font-size: 140px;
+    font-weight: bold;
+    text-align: center;
+}
+.game-block .back {
+    background-color: #607d88;
+    transform: rotateY(180deg);
+}
+.game-block .back img {
+    height: 80%;
+    width: 80%;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.momory-game-block .game-block .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border:  5px solid #2196f3;
+}
+.game-block.is-flipped,
+.game-block.has-match {
+    --webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    pointer-events: none;
+}
